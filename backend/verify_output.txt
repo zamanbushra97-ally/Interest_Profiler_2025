@@ -1,0 +1,32 @@
+Initializing Recommender...
+
+Testing with MBTI: ENFJ
+Injected 'Information-Technology' as duplicate of 'Information Technology'
+Forced 'Finance' to be identical to 'Information Technology'
+
+Recommendations:
+1. Finance: 0.106551
+2. Information Technology: 0.106551
+3. Education and training: 0.063697
+4. Hospitality and Tourism: 0.059585
+5. Arts, Audio/Video Technology, and Communications: 0.058309
+6. Human services: 0.058263
+7. Health science: 0.056379
+8. Marketing: 0.055587
+9. Government and Public Administration: 0.048827
+10. Businesses Management and Administration: 0.048376
+
+SUCCESS: Deduplication worked. Only one version of IT is present.
+
+Recommendations found:
+1. Finance: 0.106551
+2. Information Technology: 0.106551
+3. Education and training: 0.063697
+4. Hospitality and Tourism: 0.059585
+5. Arts, Audio/Video Technology, and Communications: 0.058309
+6. Human services: 0.058263
+7. Health science: 0.056379
+8. Marketing: 0.055587
+9. Government and Public Administration: 0.048827
+10. Businesses Management and Administration: 0.048376
+SUCCESS: Tie-breaking worked. 'Finance' comes before 'Information Technology' (alphabetical tie-break).

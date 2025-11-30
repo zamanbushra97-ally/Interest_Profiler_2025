@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RIASEC Quiz - Final Advanced Design</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #2c3e50;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.3);
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Particle Background */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: float 15s infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% {
+                transform: translateY(-100vh) translateX(100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .tab-container {
+            display: flex;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            z-index: 10;
+        }
+
+        .tab {
+            flex: 1;
+            padding: 18px;
+            text-align: center;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+            color: rgba(255,255,255,0.8);
+            font-weight: 500;
+        }
+
+        .tab.active {
+            background: rgba(255,255,255,0.1);
+            border-bottom-color: #fff;
+            color: white;
+            font-weight: 600;
+        }
+
+        .screen {
+            display: none;
+            padding: 0;
+            animation: fadeIn 0.6s;
+            position: relative;
+            z-index: 2;
+        }
+
+        .screen.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Welcome Screen */
+        .welcome-screen {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section {
+            margin-bottom: 50px;
+        }
+
+        .student-caricature-large {
+            width: 250px;
+            height: 250px;
+            margin: 0 auto 30px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 150px;
+            animation: floatAvatar 3s ease-in-out infinite;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+            border: 5px solid rgba(255,255,255,0.3);
+        }
+
+        .floating-caricatures {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .floating-caricature {
+            position: absolute;
+            font-size: 60px;
+            opacity: 0.3;
+            animation: floatAround 8s ease-in-out infinite;
+        }
+
+        .floating-caricature:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s; }
+        .floating-caricature:nth-child(2) { top: 20%; right: 10%; animation-delay: 2s; }
+        .floating-caricature:nth-child(3) { bottom: 15%; left: 8%; animation-delay: 4s; }
+        .floating-caricature:nth-child(4) { bottom: 25%; right: 5%; animation-delay: 6s; }
+
+        @keyframes floatAvatar {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-25px) scale(1.05); }
+        }
+
+        @keyframes floatAround {
+            0%, 100% { transform: translateY(0px) translateX(0px) rotate(0deg); }
+            25% { transform: translateY(-20px) translateX(10px) rotate(5deg); }
+            50% { transform: translateY(-10px) translateX(-10px) rotate(-5deg); }
+            75% { transform: translateY(-30px) translateX(5px) rotate(3deg); }
+        }
+
+        .welcome-header h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .welcome-header p {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            margin-bottom: 40px;
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-card {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            padding: 25px 35px;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.2);
+            min-width: 150px;
+            transition: transform 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px) scale(1.05);
+        }
+
+        .stat-icon {
+            font-size: 2.5rem;
+        }
+
+        .stat-content {
+            text-align: left;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .feature-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin: 50px 0;
+            perspective: 1000px;
+        }
+
+        .feature-card {
+            padding: 35px 25px;
+            border-radius: 20px;
+            transition: all 0.4s;
+            cursor: pointer;
+            border: none;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: rgba(255,255,255,0.5);
+        }
+
+        .feature-card.card-1 {
+            background: linear-gradient(135deg, #9B59B6 0%, #E91E63 100%);
+        }
+
+        .feature-card.card-2 {
+            background: linear-gradient(135deg, #3498DB 0%, #00D2D3 100%);
+        }
+
+        .feature-card.card-3 {
+            background: linear-gradient(135deg, #F39C12 0%, #E74C3C 100%);
+        }
+
+        .feature-card:hover {
+            transform: rotateY(5deg) rotateX(5deg) translateY(-15px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+        }
+
+        .feature-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            display: block;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+        }
+
+        .feature-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .feature-desc {
+            font-size: 0.95rem;
+            opacity: 0.95;
+            color: rgba(255,255,255,0.95);
+            line-height: 1.5;
+        }
+
+        .btn-primary {
+            width: 100%;
+            max-width: 450px;
+            padding: 22px;
+            background: white;
+            color: #667eea;
+            border: none;
+            border-radius: 16px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            margin: 40px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.4);
+        }
+
+        /* Question Screen */
+        .question-screen {
+            padding: 40px;
+            background: linear-gradient(to bottom, #f8f9fa, white);
+        }
+
+        .progress-circle-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .progress-circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: conic-gradient(#2E86DE 0deg 72deg, #e1e8ed 72deg 360deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 8px 25px rgba(46, 134, 222, 0.3);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 8px 25px rgba(46, 134, 222, 0.3); }
+            50% { box-shadow: 0 8px 35px rgba(46, 134, 222, 0.5); }
+        }
+
+        .progress-circle::before {
+            content: '';
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: white;
+            position: absolute;
+        }
+
+        .progress-text {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .progress-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2E86DE;
+        }
+
+        .progress-label {
+            font-size: 0.8rem;
+            color: #7f8c8d;
+        }
+
+        .character-section {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .animated-character {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 120px;
+            margin-bottom: 20px;
+            animation: characterBounce 2s ease-in-out infinite;
+            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.5);
+            position: relative;
+        }
+
+        .animated-character::before {
+            content: '';
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.3), rgba(118, 75, 162, 0.3));
+            animation: ripple 2s ease-out infinite;
+        }
+
+        @keyframes characterBounce {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-15px) scale(1.05); }
+        }
+
+        @keyframes ripple {
+            0% {
+                transform: scale(0.8);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1.2);
+                opacity: 0;
+            }
+        }
+
+        .character-message {
+            background: linear-gradient(135deg, #eef5ff, #f0f8ff);
+            padding: 18px 30px;
+            border-radius: 25px;
+            display: inline-block;
+            font-size: 1rem;
+            color: #2c3e50;
+            border-left: 5px solid #2E86DE;
+            max-width: 450px;
+            font-weight: 500;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .question-card {
+            background: linear-gradient(135deg, #eef5ff 0%, #f0f8ff 100%);
+            border: none;
+            border-radius: 20px;
+            padding: 45px;
+            margin: 35px 0;
+            box-shadow: 0 10px 40px rgba(46, 134, 222, 0.15);
+            position: relative;
+            overflow: hidden;
+            border-left: 5px solid #2E86DE;
+        }
+
+        .question-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(180deg, #667eea, #764ba2);
+        }
+
+        .question-number {
+            color: #2E86DE;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .question-icon-large {
+            font-size: 4rem;
+            margin: 25px 0;
+            text-align: center;
+            display: block;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+        }
+
+        .question-text {
+            font-size: 1.6rem;
+            line-height: 1.7;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .likert-container {
+            margin: 40px 0;
+        }
+
+        .likert-title {
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+
+        .likert-scale-advanced {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin: 35px 0;
+        }
+
+        .scale-option-advanced {
+            flex: 1;
+            padding: 30px 18px;
+            border: 3px solid #e1e8ed;
+            border-radius: 18px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .scale-option-advanced::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s;
+        }
+
+        .scale-option-advanced:hover::before {
+            left: 100%;
+        }
+
+        .scale-option-advanced:hover {
+            border-color: #2E86DE;
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(46, 134, 222, 0.3);
+        }
+
+        .scale-option-advanced.selected {
+            background: linear-gradient(135deg, #2E86DE, #6C5CE7);
+            color: white;
+            border-color: #2E86DE;
+            transform: scale(1.08) translateY(-8px);
+            box-shadow: 0 12px 35px rgba(46, 134, 222, 0.5);
+        }
+
+        .scale-emoji {
+            font-size: 3rem;
+            margin-bottom: 12px;
+            display: block;
+            line-height: 1;
+        }
+
+        .scale-value {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .scale-label {
+            font-size: 0.8rem;
+            opacity: 0.9;
+            line-height: 1.4;
+        }
+
+        .selected-feedback {
+            text-align: center;
+            padding: 22px;
+            background: linear-gradient(135deg, #eef5ff, #f0f4ff);
+            border-radius: 18px;
+            margin-top: 35px;
+            color: #2E86DE;
+            font-weight: 600;
+            font-size: 1.2rem;
+            border: 2px solid #2E86DE;
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 15px rgba(46, 134, 222, 0.3); }
+            50% { box-shadow: 0 0 25px rgba(46, 134, 222, 0.6); }
+        }
+
+        .tip-box {
+            background: #fff5e6;
+            border-left: 5px solid #F39C12;
+            padding: 18px 25px;
+            border-radius: 15px;
+            margin-top: 35px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .tip-icon {
+            font-size: 1.8rem;
+        }
+
+        /* Result Screen */
+        .result-screen {
+            padding: 40px;
+            background: linear-gradient(to bottom, #f8f9fa, white);
+            position: relative;
+        }
+
+        .confetti-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #2E86DE;
+            animation: confettiFall 3s linear;
+        }
+
+        @keyframes confettiFall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .result-header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .result-header h1 {
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: #2c3e50;
+            margin-bottom: 25px;
+        }
+
+        .result-code {
+            font-size: 5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 25px 0;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .stat-box-advanced {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 28px;
+            border-radius: 18px;
+            margin: 25px auto;
+            max-width: 450px;
+            box-shadow: 0 8px 30px rgba(102, 126, 234, 0.3);
+            color: white;
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 1.15rem;
+            color: white;
+        }
+
+        .stat-row strong {
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        .interest-grid-advanced {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin: 50px 0;
+            perspective: 1000px;
+        }
+
+        .interest-card-final {
+            background: white;
+            border: 2px solid #e1e8ed;
+            border-radius: 20px;
+            padding: 35px 25px;
+            text-align: center;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .interest-card-final::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--card-gradient);
+        }
+
+        .interest-card-final:hover {
+            transform: translateY(-12px) rotateY(5deg);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+        }
+
+        .interest-icon-large {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            display: block;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
+        }
+
+        .interest-name-full {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        .interest-percentage {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin: 20px 0;
+            background: var(--card-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .interest-description {
+            font-size: 0.95rem;
+            color: #7f8c8d;
+            line-height: 1.6;
+            margin-top: 15px;
+            font-style: italic;
+        }
+
+        .interest-card-final.R {
+            --card-gradient: linear-gradient(135deg, #E74C3C, #C0392B);
+        }
+
+        .interest-card-final.I {
+            --card-gradient: linear-gradient(135deg, #3498DB, #2980B9);
+        }
+
+        .interest-card-final.A {
+            --card-gradient: linear-gradient(135deg, #9B59B6, #8E44AD);
+        }
+
+        .interest-card-final.S {
+            --card-gradient: linear-gradient(135deg, #2ECC71, #27AE60);
+        }
+
+        .interest-card-final.E {
+            --card-gradient: linear-gradient(135deg, #F39C12, #E67E22);
+        }
+
+        .interest-card-final.C {
+            --card-gradient: linear-gradient(135deg, #34495E, #2C3E50);
+        }
+
+        .chart-placeholder-advanced {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border: 3px dashed #dee2e6;
+            border-radius: 20px;
+            padding: 100px;
+            text-align: center;
+            color: #7f8c8d;
+            margin: 40px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chart-placeholder-advanced::before {
+            content: '📊';
+            font-size: 5rem;
+            display: block;
+            margin-bottom: 20px;
+            animation: rotate 3s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .student-gallery {
+            margin: 50px 0;
+            padding: 35px;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 24px;
+        }
+
+        .student-gallery h3 {
+            margin-bottom: 25px;
+            color: #2c3e50;
+            text-align: center;
+            font-size: 1.8rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .gallery-item {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.08) translateY(-5px);
+        }
+
+        .gallery-avatar {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            margin: 0 auto 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .gallery-name {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .gallery-code {
+            font-size: 0.8rem;
+            color: #7f8c8d;
+        }
+
+        @media (max-width: 768px) {
+            .feature-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .likert-scale-advanced {
+                flex-direction: column;
+            }
+            
+            .interest-grid-advanced {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="particles" id="particles"></div>
+        
+        <div class="tab-container">
+            <div class="tab active" onclick="showScreen('welcome')">Welcome</div>
+            <div class="tab" onclick="showScreen('question')">Question</div>
+            <div class="tab" onclick="showScreen('result')">Result</div>
+        </div>
+
+        <!-- Welcome Screen -->
+        <div id="welcome" class="screen active welcome-screen">
+            <div class="floating-caricatures">
+                <div class="floating-caricature">👨‍🎓</div>
+                <div class="floating-caricature">👩‍🎨</div>
+                <div class="floating-caricature">👨‍🔬</div>
+                <div class="floating-caricature">👩‍💼</div>
+            </div>
+
+            <div class="hero-section">
+                <div class="student-caricature-large">👨‍🎓</div>
+                <div class="welcome-header">
+                    <h1>Discover Your Career Path</h1>
+                    <p>Find out what career path matches your interests and personality</p>
+                </div>
+            </div>
+
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-icon">👥</div>
+                    <div class="stat-content">
+                        <div class="stat-value">10K+</div>
+                        <div class="stat-label">Students</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">⏱️</div>
+                    <div class="stat-content">
+                        <div class="stat-value">10-15 min</div>
+                        <div class="stat-label">Assessment</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">✅</div>
+                    <div class="stat-content">
+                        <div class="stat-value">95%</div>
+                        <div class="stat-label">Accuracy</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="feature-cards">
+                <div class="feature-card card-1">
+                    <span class="feature-icon">🧬</span>
+                    <div class="feature-title">Get Your Code</div>
+                    <div class="feature-desc">Discover your unique RIASEC profile</div>
+                </div>
+                <div class="feature-card card-2">
+                    <span class="feature-icon">🗺️</span>
+                    <div class="feature-title">Find Your Path</div>
+                    <div class="feature-desc">Match with ideal career clusters</div>
+                </div>
+                <div class="feature-card card-3">
+                    <span class="feature-icon">🎯</span>
+                    <div class="feature-title">Plan Your Future</div>
+                    <div class="feature-desc">Get personalized recommendations</div>
+                </div>
+            </div>
+
+            <button class="btn-primary" onclick="showScreen('question')">
+                🚀 Start Your Assessment
+                <span style="font-size: 1.3rem;">→</span>
+            </button>
+        </div>
+
+        <!-- Question Screen -->
+        <div id="question" class="screen question-screen">
+            <div class="progress-circle-container">
+                <div class="progress-circle">
+                    <div class="progress-text">
+                        <div class="progress-number">12/60</div>
+                        <div class="progress-label">20%</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="character-section">
+                <div class="animated-character">👋</div>
+                <div class="character-message">
+                    Hi! Let's discover your interests together
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-number">Question 12 of 60</div>
+                <span class="question-icon-large">⚙️</span>
+                <div class="question-text">
+                    "I enjoy working with tools and machinery to build or repair things."
+                </div>
+            </div>
+
+            <div class="likert-container">
+                <div class="likert-title">How much does this describe you?</div>
+                
+                <div class="likert-scale-advanced">
+                    <div class="scale-option-advanced" onclick="selectOptionAdvanced(1, this)">
+                        <span class="scale-emoji">🙁</span>
+                        <div class="scale-value">1</div>
+                        <div class="scale-label">Strongly<br>Disagree</div>
+                    </div>
+                    <div class="scale-option-advanced selected" onclick="selectOptionAdvanced(2, this)">
+                        <span class="scale-emoji">😐</span>
+                        <div class="scale-value">2</div>
+                        <div class="scale-label">Somewhat<br>Disagree</div>
+                    </div>
+                    <div class="scale-option-advanced" onclick="selectOptionAdvanced(3, this)">
+                        <span class="scale-emoji">🙂</span>
+                        <div class="scale-value">3</div>
+                        <div class="scale-label">Neutral</div>
+                    </div>
+                    <div class="scale-option-advanced" onclick="selectOptionAdvanced(4, this)">
+                        <span class="scale-emoji">😊</span>
+                        <div class="scale-value">4</div>
+                        <div class="scale-label">Somewhat<br>Agree</div>
+                    </div>
+                    <div class="scale-option-advanced" onclick="selectOptionAdvanced(5, this)">
+                        <span class="scale-emoji">😄</span>
+                        <div class="scale-value">5</div>
+                        <div class="scale-label">Strongly<br>Agree</div>
+                    </div>
+                </div>
+
+                <div class="selected-feedback">
+                    Selected: 2 - Somewhat Disagree
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <span class="tip-icon">💡</span>
+                <span>Tip: Think about activities you naturally enjoy doing in your free time</span>
+            </div>
+        </div>
+
+        <!-- Result Screen -->
+        <div id="result" class="screen result-screen">
+            <div class="confetti-container" id="confetti"></div>
+            
+            <div class="result-header">
+                <h1>🎉 Congratulations!</h1>
+                <div class="result-code">AIS</div>
+                <div class="stat-box-advanced">
+                    <div class="stat-row">
+                        <span><strong>Confidence:</strong></span>
+                        <span style="color: #FFD700; font-weight: bold; font-size: 1.25rem;">87%</span>
+                    </div>
+                    <div class="stat-row">
+                        <span><strong>Questions Answered:</strong></span>
+                        <span style="color: rgba(255,255,255,0.95); font-weight: 600;">60 / 60</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chart-placeholder-advanced">
+                Interactive Radar Chart<br>
+                <small style="font-size: 0.95rem;">Shows your interest profile across all 6 dimensions</small>
+            </div>
+
+            <h3 style="margin: 50px 0 30px 0; text-align: center; color: #2c3e50; font-size: 1.8rem;">Your Interest Profile</h3>
+            <div class="interest-grid-advanced">
+                <div class="interest-card-final A">
+                    <span class="interest-icon-large">🎭</span>
+                    <div class="interest-name-full">Artistic</div>
+                    <div class="interest-percentage">85%</div>
+                    <div class="interest-description">You're drawn to creative expression and imaginative work.</div>
+                </div>
+                <div class="interest-card-final I">
+                    <span class="interest-icon-large">🔬</span>
+                    <div class="interest-name-full">Investigative</div>
+                    <div class="interest-percentage">78%</div>
+                    <div class="interest-description">You like analyzing problems and exploring scientific concepts.</div>
+                </div>
+                <div class="interest-card-final S">
+                    <span class="interest-icon-large">💬</span>
+                    <div class="interest-name-full">Social</div>
+                    <div class="interest-percentage">72%</div>
+                    <div class="interest-description">You enjoy helping others and working with people.</div>
+                </div>
+                <div class="interest-card-final R">
+                    <span class="interest-icon-large">🔨</span>
+                    <div class="interest-name-full">Realistic</div>
+                    <div class="interest-percentage">52%</div>
+                    <div class="interest-description">You enjoy working with tools, machines, and hands-on activities.</div>
+                </div>
+                <div class="interest-card-final E">
+                    <span class="interest-icon-large">💼</span>
+                    <div class="interest-name-full">Enterprising</div>
+                    <div class="interest-percentage">48%</div>
+                    <div class="interest-description">You're motivated by leadership and business opportunities.</div>
+                </div>
+                <div class="interest-card-final C">
+                    <span class="interest-icon-large">📊</span>
+                    <div class="interest-name-full">Conventional</div>
+                    <div class="interest-percentage">45%</div>
+                    <div class="interest-description">You prefer structured, organized, and detail-oriented work.</div>
+                </div>
+            </div>
+
+            <div class="student-gallery">
+                <h3>🌟 Students Like You</h3>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <div class="gallery-avatar">👨‍🎓</div>
+                        <div class="gallery-name">Alex</div>
+                        <div class="gallery-code">AIS Code</div>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="gallery-avatar">👩‍🎨</div>
+                        <div class="gallery-name">Sarah</div>
+                        <div class="gallery-code">ASI Code</div>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="gallery-avatar">👨‍🔬</div>
+                        <div class="gallery-name">Mike</div>
+                        <div class="gallery-code">ISA Code</div>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="gallery-avatar">👩‍💼</div>
+                        <div class="gallery-name">Emma</div>
+                        <div class="gallery-code">SAI Code</div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn-primary" style="max-width: 100%; margin-top: 50px;">
+                📊 View Career Recommendations
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Create floating particles
+        function createParticles() {
+            const container = document.getElementById('particles');
+            const colors = ['#ffffff', '#667eea', '#764ba2'];
+            for (let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.opacity = Math.random() * 0.5 + 0.3;
+                container.appendChild(particle);
+            }
+        }
+
+        // Create confetti
+        function createConfetti() {
+            const container = document.getElementById('confetti');
+            const colors = ['#2E86DE', '#6C5CE7', '#00D2D3', '#F39C12', '#E74C3C'];
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animationDelay = Math.random() * 3 + 's';
+                confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                container.appendChild(confetti);
+            }
+        }
+
+        function showScreen(screenId) {
+            // Hide all screens
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            
+            // Show selected screen
+            document.getElementById(screenId).classList.add('active');
+            
+            // Update tab
+            event.target.classList.add('active');
+
+            // Create confetti for result screen
+            if (screenId === 'result') {
+                setTimeout(() => {
+                    document.getElementById('confetti').innerHTML = '';
+                    createConfetti();
+                }, 100);
+            }
+        }
+
+        function selectOptionAdvanced(value, element) {
+            // Remove selected from all options
+            document.querySelectorAll('.scale-option-advanced').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            
+            // Add selected to clicked option
+            element.classList.add('selected');
+            
+            // Update feedback text
+            const labels = ['', 'Strongly Disagree', 'Somewhat Disagree', 'Neutral', 'Somewhat Agree', 'Strongly Agree'];
+            document.querySelector('.selected-feedback').textContent = `Selected: ${value} - ${labels[value]}`;
+            
+            // Add click animation
+            element.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                element.style.transform = '';
+            }, 150);
+        }
+
+        // Initialize particles on load
+        createParticles();
+    </script>
+</body>
+</html>
+

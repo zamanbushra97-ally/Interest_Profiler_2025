@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RIASEC Quiz Design Preview</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #2c3e50;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .tab-container {
+            display: flex;
+            background: #f8f9fa;
+            border-bottom: 2px solid #e1e8ed;
+        }
+
+        .tab {
+            flex: 1;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .tab.active {
+            background: white;
+            border-bottom-color: #2E86DE;
+            color: #2E86DE;
+            font-weight: 600;
+        }
+
+        .screen {
+            display: none;
+            padding: 40px;
+            animation: fadeIn 0.5s;
+        }
+
+        .screen.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Welcome Screen */
+        .welcome-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .welcome-header h1 {
+            font-size: 2.5rem;
+            color: #2E86DE;
+            margin-bottom: 10px;
+        }
+
+        .welcome-header p {
+            font-size: 1.2rem;
+            color: #7f8c8d;
+        }
+
+        .info-box {
+            background: #eef5ff;
+            border-left: 5px solid #2E86DE;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .info-box h3 {
+            color: #2E86DE;
+            margin-bottom: 15px;
+        }
+
+        .info-box ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .info-box li {
+            padding: 8px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .info-box li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #2E86DE;
+            font-weight: bold;
+        }
+
+        .tips-box {
+            background: #fff5e6;
+            border-left: 5px solid #F39C12;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .btn-primary {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #2E86DE 0%, #6C5CE7 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(46, 134, 222, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(46, 134, 222, 0.6);
+        }
+
+        /* Question Screen */
+        .progress-container {
+            margin-bottom: 30px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e1e8ed;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #2E86DE, #6C5CE7);
+            border-radius: 10px;
+            transition: width 0.5s ease;
+        }
+
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+
+        .question-card {
+            background: white;
+            border: 2px solid #e1e8ed;
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .question-number {
+            color: #2E86DE;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .question-text {
+            font-size: 1.4rem;
+            line-height: 1.6;
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+
+        .likert-container {
+            margin: 30px 0;
+        }
+
+        .likert-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 0.85rem;
+            color: #7f8c8d;
+        }
+
+        .likert-scale {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .scale-option {
+            flex: 1;
+            padding: 15px;
+            border: 2px solid #e1e8ed;
+            border-radius: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: white;
+        }
+
+        .scale-option:hover {
+            border-color: #2E86DE;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(46, 134, 222, 0.2);
+        }
+
+        .scale-option.selected {
+            background: linear-gradient(135deg, #2E86DE, #6C5CE7);
+            color: white;
+            border-color: #2E86DE;
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(46, 134, 222, 0.4);
+        }
+
+        .scale-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .scale-label {
+            font-size: 0.75rem;
+        }
+
+        .selected-feedback {
+            text-align: center;
+            padding: 15px;
+            background: #eef5ff;
+            border-radius: 10px;
+            margin-top: 20px;
+            color: #2E86DE;
+            font-weight: 600;
+        }
+
+        /* Result Screen */
+        .result-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .result-code {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #2E86DE;
+            margin: 20px 0;
+        }
+
+        .stat-box {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .interest-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .interest-card {
+            background: white;
+            border: 2px solid #e1e8ed;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .interest-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+        }
+
+        .interest-letter {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .interest-percentage {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2E86DE;
+            margin: 10px 0;
+        }
+
+        .interest-name {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+
+        /* Color coding for RIASEC types */
+        .interest-card.R { border-left: 5px solid #E74C3C; }
+        .interest-card.I { border-left: 5px solid #3498DB; }
+        .interest-card.A { border-left: 5px solid #9B59B6; }
+        .interest-card.S { border-left: 5px solid #2ECC71; }
+        .interest-card.E { border-left: 5px solid #F39C12; }
+        .interest-card.C { border-left: 5px solid #34495E; }
+
+        .chart-placeholder {
+            background: #f8f9fa;
+            border: 2px dashed #e1e8ed;
+            border-radius: 12px;
+            padding: 60px;
+            text-align: center;
+            color: #7f8c8d;
+            margin: 30px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="tab-container">
+            <div class="tab active" onclick="showScreen('welcome')">Welcome</div>
+            <div class="tab" onclick="showScreen('question')">Question</div>
+            <div class="tab" onclick="showScreen('result')">Result</div>
+        </div>
+
+        <!-- Welcome Screen -->
+        <div id="welcome" class="screen active">
+            <div class="welcome-header">
+                <h1>🎯 RIASEC Career Assessment</h1>
+                <p>Discover your career interests through the Holland Code system</p>
+            </div>
+
+            <div class="info-box">
+                <h3>📊 What You'll Discover:</h3>
+                <ul>
+                    <li>Your top 3 interest areas (RIASEC Code)</li>
+                    <li>Career clusters that match your personality</li>
+                    <li>Personalized career recommendations</li>
+                </ul>
+            </div>
+
+            <div class="tips-box">
+                <h3>💡 Tips:</h3>
+                <ul>
+                    <li>Answer honestly based on your interests</li>
+                    <li>There are no right or wrong answers</li>
+                    <li>Takes about 5-10 minutes</li>
+                    <li>You can take breaks and return anytime</li>
+                </ul>
+            </div>
+
+            <button class="btn-primary" onclick="showScreen('question')">
+                🚀 Start Assessment
+            </button>
+        </div>
+
+        <!-- Question Screen -->
+        <div id="question" class="screen">
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 20%"></div>
+                </div>
+                <div class="progress-text">
+                    <span>Question 12 of 60</span>
+                    <span>20% Complete</span>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-number">Question 12 of 60</div>
+                <div class="question-text">
+                    "I enjoy working with tools and machinery to build or repair things."
+                </div>
+            </div>
+
+            <div class="likert-container">
+                <h3 style="text-align: center; margin-bottom: 20px; color: #2c3e50;">
+                    How much does this describe you?
+                </h3>
+                
+                <div class="likert-labels">
+                    <span>Strongly<br>Disagree</span>
+                    <span></span>
+                    <span>Neutral</span>
+                    <span></span>
+                    <span>Strongly<br>Agree</span>
+                </div>
+
+                <div class="likert-scale">
+                    <div class="scale-option" onclick="selectOption(1, this)">
+                        <div class="scale-value">1</div>
+                        <div class="scale-label">Strong<br>Disagree</div>
+                    </div>
+                    <div class="scale-option selected" onclick="selectOption(2, this)">
+                        <div class="scale-value">2</div>
+                        <div class="scale-label">Somewhat<br>Disagree</div>
+                    </div>
+                    <div class="scale-option" onclick="selectOption(3, this)">
+                        <div class="scale-value">3</div>
+                        <div class="scale-label">Neutral</div>
+                    </div>
+                    <div class="scale-option" onclick="selectOption(4, this)">
+                        <div class="scale-value">4</div>
+                        <div class="scale-label">Somewhat<br>Agree</div>
+                    </div>
+                    <div class="scale-option" onclick="selectOption(5, this)">
+                        <div class="scale-value">5</div>
+                        <div class="scale-label">Strong<br>Agree</div>
+                    </div>
+                </div>
+
+                <div class="selected-feedback">
+                    Selected: 2 - Somewhat Disagree
+                </div>
+            </div>
+        </div>
+
+        <!-- Result Screen -->
+        <div id="result" class="screen">
+            <div class="result-header">
+                <h1>🎉 Your RIASEC Assessment Results</h1>
+                <div class="result-code">AIS</div>
+                <div class="stat-box">
+                    <div class="stat-row">
+                        <span><strong>Confidence:</strong></span>
+                        <span style="color: #2E86DE; font-weight: bold;">87%</span>
+                    </div>
+                    <div class="stat-row">
+                        <span><strong>Questions Answered:</strong></span>
+                        <span>60 / 60</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chart-placeholder">
+                📊 Interactive Radar Chart Here<br>
+                <small>Shows your interest profile across all 6 RIASEC dimensions</small>
+            </div>
+
+            <h3 style="margin: 30px 0 15px 0;">Your Interest Profile:</h3>
+            <div class="interest-grid">
+                <div class="interest-card A">
+                    <div class="interest-letter">A</div>
+                    <div class="interest-percentage">85%</div>
+                    <div class="interest-name">Artistic</div>
+                </div>
+                <div class="interest-card I">
+                    <div class="interest-letter">I</div>
+                    <div class="interest-percentage">78%</div>
+                    <div class="interest-name">Investigative</div>
+                </div>
+                <div class="interest-card S">
+                    <div class="interest-letter">S</div>
+                    <div class="interest-percentage">72%</div>
+                    <div class="interest-name">Social</div>
+                </div>
+                <div class="interest-card R">
+                    <div class="interest-letter">R</div>
+                    <div class="interest-percentage">52%</div>
+                    <div class="interest-name">Realistic</div>
+                </div>
+                <div class="interest-card E">
+                    <div class="interest-letter">E</div>
+                    <div class="interest-percentage">48%</div>
+                    <div class="interest-name">Enterprising</div>
+                </div>
+                <div class="interest-card C">
+                    <div class="interest-letter">C</div>
+                    <div class="interest-percentage">45%</div>
+                    <div class="interest-name">Conventional</div>
+                </div>
+            </div>
+
+            <button class="btn-primary" style="margin-top: 30px;">
+                📊 View Career Recommendations
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function showScreen(screenId) {
+            // Hide all screens
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            
+            // Show selected screen
+            document.getElementById(screenId).classList.add('active');
+            
+            // Update tab
+            event.target.classList.add('active');
+        }
+
+        function selectOption(value, element) {
+            // Remove selected from all options
+            document.querySelectorAll('.scale-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            
+            // Add selected to clicked option
+            element.classList.add('selected');
+            
+            // Update feedback text
+            const labels = ['', 'Strongly Disagree', 'Somewhat Disagree', 'Neutral', 'Somewhat Agree', 'Strongly Agree'];
+            document.querySelector('.selected-feedback').textContent = `Selected: ${value} - ${labels[value]}`;
+        }
+    </script>
+</body>
+</html>
+

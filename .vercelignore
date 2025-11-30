@@ -1,0 +1,60 @@
+# Python
+backend/venv/
+backend/__pycache__/
+backend/**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+*.log
+
+# Node
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Testing
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Logs
+logs/
+*.log
+
+# Temporary
+*.tmp
+temp/
+tmp/
+
+# Development files
+backend/extract_weights.py
+backend/check_*.py
+backend/dump_*.py
+backend/reproduce_*.py
+backend/update_*.py
+backend/verify_*.py
+*.md
+!README.md
+!README_DEPLOYMENT.md

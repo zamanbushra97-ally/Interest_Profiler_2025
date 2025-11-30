@@ -1,0 +1,98 @@
+MBTI,Traits,Career_Cluster
+ISTJ,Responsible + Detail-Oriented,"Science, Technology, Engineering, and Mathematics (STEM)"
+ISTJ,Responsible + Detail-Oriented,Information Technology
+ISTJ,Responsible + Detail-Oriented,Finance
+ISTJ,Responsible + Detail-Oriented,Government and Public Administration
+ISTJ,Responsible + Detail-Oriented,"Transportation, distribution, and logistics"
+ISTJ,Responsible + Detail-Oriented,Architecture and Construction
+ISTJ,Responsible + Detail-Oriented,Manufacturing
+ISFJ,Supportive + Reliable,Health science
+ISFJ,Supportive + Reliable,Education and training
+ISFJ,Supportive + Reliable,Human services
+ISFJ,Supportive + Reliable,Government and Public Administration
+ISFJ,Supportive + Reliable,Businesses Management and Administration
+ISFJ,Supportive + Reliable,Hospitality and Tourism
+INFJ,Insightful + Purpose-Driven,Education and training
+INFJ,Insightful + Purpose-Driven,Human services
+INFJ,Insightful + Purpose-Driven,Health science
+INFJ,Insightful + Purpose-Driven,"Arts, Audio/Video Technology, and Communications"
+INFJ,Insightful + Purpose-Driven,Government and Public Administration
+INFJ,Insightful + Purpose-Driven,"Law, public safety, corrections, and security"
+INTJ,Strategic + Analytical,"Science, Technology, Engineering, and Mathematics (STEM)"
+INTJ,Strategic + Analytical,Information Technology
+INTJ,Strategic + Analytical,Finance
+INTJ,Strategic + Analytical,Businesses Management and Administration
+INTJ,Strategic + Analytical,Architecture and Construction
+INTJ,Strategic + Analytical,Manufacturing
+ISTP,Practical + Hands‑On,Manufacturing
+ISTP,Practical + Hands‑On,Architecture and Construction
+ISTP,Practical + Hands‑On,"Transportation, distribution, and logistics"
+ISTP,Practical + Hands‑On,"Law, public safety, corrections, and security"
+ISTP,Practical + Hands‑On,"Science, Technology, Engineering, and Mathematics (STEM)"
+ISTP,Practical + Hands‑On,Information Technology
+ISFP,Creative + Gentle,"Arts, Audio/Video Technology, and Communications"
+ISFP,Creative + Gentle,Hospitality and Tourism
+ISFP,Creative + Gentle,Human services
+ISFP,Creative + Gentle,Health science
+ISFP,Creative + Gentle,"Agriculture, food, and natural resources"
+ISFP,Creative + Gentle,Education and training
+INFP,Idealistic + Empathetic,Human services
+INFP,Idealistic + Empathetic,Education and training
+INFP,Idealistic + Empathetic,"Arts, Audio/Video Technology, and Communications"
+INFP,Idealistic + Empathetic,Health science
+INFP,Idealistic + Empathetic,Government and Public Administration
+INFP,Idealistic + Empathetic,Marketing
+INTP,Curious + Conceptual,"Science, Technology, Engineering, and Mathematics (STEM)"
+INTP,Curious + Conceptual,Information Technology
+INTP,Curious + Conceptual,Finance
+INTP,Curious + Conceptual,Manufacturing
+INTP,Curious + Conceptual,Businesses Management and Administration
+INTP,Curious + Conceptual,Architecture and Construction
+ESTP,Energetic + Action‑Oriented,Marketing
+ESTP,Energetic + Action‑Oriented,"Transportation, distribution, and logistics"
+ESTP,Energetic + Action‑Oriented,Architecture and Construction
+ESTP,Energetic + Action‑Oriented,"Law, public safety, corrections, and security"
+ESTP,Energetic + Action‑Oriented,Hospitality and Tourism
+ESTP,Energetic + Action‑Oriented,Manufacturing
+ESFP,Expressive + People‑Focused,Hospitality and Tourism
+ESFP,Expressive + People‑Focused,"Arts, Audio/Video Technology, and Communications"
+ESFP,Expressive + People‑Focused,Human services
+ESFP,Expressive + People‑Focused,Marketing
+ESFP,Expressive + People‑Focused,Education and training
+ESFP,Expressive + People‑Focused,Health science
+ENFP,Enthusiastic + Imaginative,Marketing
+ENFP,Enthusiastic + Imaginative,"Arts, Audio/Video Technology, and Communications"
+ENFP,Enthusiastic + Imaginative,Education and training
+ENFP,Enthusiastic + Imaginative,Human services
+ENFP,Enthusiastic + Imaginative,Government and Public Administration
+ENFP,Enthusiastic + Imaginative,Information Technology
+ENTP,Innovative + Challenging,Information Technology
+ENTP,Innovative + Challenging,"Science, Technology, Engineering, and Mathematics (STEM)"
+ENTP,Innovative + Challenging,Marketing
+ENTP,Innovative + Challenging,Businesses Management and Administration
+ENTP,Innovative + Challenging,Finance
+ENTP,Innovative + Challenging,Architecture and Construction
+ESTJ,Efficient + Organizing,Businesses Management and Administration
+ESTJ,Efficient + Organizing,Government and Public Administration
+ESTJ,Efficient + Organizing,Finance
+ESTJ,Efficient + Organizing,Manufacturing
+ESTJ,Efficient + Organizing,"Transportation, distribution, and logistics"
+ESTJ,Efficient + Organizing,Education and training
+ESFJ,Supportive + Community‑Driven,Education and training
+ESFJ,Supportive + Community‑Driven,Human services
+ESFJ,Supportive + Community‑Driven,Health science
+ESFJ,Supportive + Community‑Driven,Hospitality and Tourism
+ESFJ,Supportive + Community‑Driven,Businesses Management and Administration
+ESFJ,Supportive + Community‑Driven,Government and Public Administration
+ENFJ,Inspiring + Mentor‑like,Education and training
+ENFJ,Inspiring + Mentor‑like,Human services
+ENFJ,Inspiring + Mentor‑like,Health science
+ENFJ,Inspiring + Mentor‑like,Marketing
+ENFJ,Inspiring + Mentor‑like,Government and Public Administration
+ENFJ,Inspiring + Mentor‑like,"Arts, Audio/Video Technology, and Communications"
+ENTJ,Decisive + Strategic,Businesses Management and Administration
+ENTJ,Decisive + Strategic,Finance
+ENTJ,Decisive + Strategic,Information Technology
+ENTJ,Decisive + Strategic,"Science, Technology, Engineering, and Mathematics (STEM)"
+ENTJ,Decisive + Strategic,Government and Public Administration
+ENTJ,Decisive + Strategic,Manufacturing

@@ -1,0 +1,82 @@
+ID    Axis  Question                                                     Yes   No   
+------------------------------------------------------------------------------------------
+1     ?     Do you prefer spending time alone rather than attending so   I     1    
+2     ?     Do you often feel drained after socializing with large gro   I     2    
+3     ?     Do you enjoy working independently more than collaborating   I     3    
+4     ?     Do you find it easier to express your thoughts in writing    I     4    
+5     ?     Do you tend to keep your thoughts and feelings to yourself   I     5    
+6     ?     Do you prefer deep  one-on-one conversations to group disc   I     6    
+7     ?     Do you find it challenging to approach new people and star   I     7    
+8     ?     Do you feel more productive when working in a quiet  solit   I     8    
+9     ?     Do you often reflect on your thoughts and feelings rather    I     9    
+10    ?     Do you tend to avoid being the center of attention in soci   I     10   
+11    ?     Do you enjoy attending parties and social gatherings with    E     11   
+12    ?     Do you often seek out new social experiences and meet new    E     12   
+13    ?     Do you feel energized and recharged after spending time wi   E     13   
+14    ?     Do you prefer working in a group or team rather than worki   E     14   
+15    ?     Do you find it easy to strike up conversations with strang   E     15   
+16    ?     Do you enjoy being the center of attention in social setti   E     16   
+17    ?     Do you prefer to spend your free time with friends rather    E     17   
+18    ?     Do you enjoy participating in group activities and events?   E     18   
+19    ?     Do you often find yourself talking more than listening in    E     19   
+20    ?     Do you thrive in environments where you are surrounded by    E     20   
+21    ?     Do you prefer to focus on facts and details rather than id   S     21   
+22    ?     Do you rely more on your experiences than your instincts w   S     22   
+23    ?     Do you prefer concrete information over abstract theories?   S     23   
+24    ?     Do you enjoy tasks that involve hands-on work and tangible   S     24   
+25    ?     Do you feel more comfortable dealing with practical issues   S     25   
+26    ?     Do you tend to focus on the present rather than thinking a   S     26   
+27    ?     Do you trust what you can see and touch more than what you   S     27   
+28    ?     Do you prefer step-by-step instructions over broad guideli   S     28   
+29    ?     Do you enjoy working with your hands and creating physical   S     29   
+30    ?     Do you find it easier to solve problems by applying tried-   S     30   
+31    ?     Do you often think about the possibilities of what could b   N     31   
+32    ?     Do you enjoy brainstorming and coming up with new ideas?     N     32   
+33    ?     Do you prefer to focus on the big picture rather than gett   N     33   
+34    ?     Do you rely more on your intuition than on concrete data w   N     34   
+35    ?     Do you often find yourself imagining future possibilities    N     35   
+36    ?     Do you enjoy exploring abstract concepts and theories?       N     36   
+37    ?     Do you tend to think about the future and what could be ra   N     37   
+38    ?     Do you find yourself daydreaming about different scenarios   N     38   
+39    ?     Do you prefer to approach problems creatively rather than    N     39   
+40    ?     Do you often trust your gut feelings even when they contra   N     40   
+41    ?     Do you prioritize logic and objectivity over emotions when   T     41   
+42    ?     Do you find it easier to make decisions based on facts rat   T     42   
+43    ?     Do you prefer to be direct and straightforward in your com   T     43   
+44    ?     Do you enjoy analyzing problems and finding logical soluti   T     44   
+45    ?     Do you believe that fairness is more important than kindne   T     45   
+46    ?     Do you find it easier to critique others' ideas than to of   T     46   
+47    ?     Do you prefer to stick to the facts in discussions rather    T     47   
+48    ?     Do you tend to be more critical than compassionate in your   T     48   
+49    ?     Do you value efficiency and effectiveness over harmony in    T     49   
+50    ?     Do you often find yourself making decisions based on what    T     50   
+51    ?     Do you consider how your decisions will affect others' fee   F     51   
+52    ?     Do you prefer to maintain harmony in relationships rather    F     52   
+53    ?     Do you often find yourself making decisions based on what    F     53   
+54    ?     Do you prioritize others' needs and emotions when making d   F     54   
+55    ?     Do you tend to avoid conflict and seek to maintain peacefu   F     55   
+56    ?     Do you find it difficult to make decisions that might hurt   F     56   
+57    ?     Do you prefer to show empathy and understanding in your in   F     57   
+58    ?     Do you value kindness and compassion over strict fairness?   F     58   
+59    ?     Do you often find yourself putting others' needs before yo   F     59   
+60    ?     Do you consider emotional impact more than logical consist   F     60   
+61    ?     Do you prefer to plan things in advance rather than being    J     61   
+62    ?     Do you feel more comfortable when you have a clear schedul   J     62   
+63    ?     Do you like to finish tasks before starting new ones?        J     63   
+64    ?     Do you find it satisfying to check items off a to-do list?   J     64   
+65    ?     Do you prefer having a structured routine rather than goin   J     65   
+66    ?     Do you feel uneasy when plans change at the last minute?     J     66   
+67    ?     Do you like to make decisions quickly rather than keeping    J     67   
+68    ?     Do you prefer to know what to expect rather than dealing w   J     68   
+69    ?     Do you often set goals and work systematically to achieve    J     69   
+70    ?     Do you find it easier to work with deadlines rather than o   J     70   
+71    ?     Do you enjoy being spontaneous and flexible rather than st   P     71   
+72    ?     Do you prefer to keep your options open rather than making   P     72   
+73    ?     Do you enjoy exploring new opportunities rather than stick   P     73   
+74    ?     Do you feel comfortable adapting to changes and new situat   P     74   
+75    ?     Do you find it easy to switch between tasks rather than fo   P     75   
+76    ?     Do you prefer to go with the flow rather than sticking to    P     76   
+77    ?     Do you often wait until the last minute to make decisions?   P     77   
+78    ?     Do you enjoy working on multiple projects at once rather t   P     78   
+79    ?     Do you prefer to take things as they come rather than plan   P     79   
+80    ?     Do you find it easy to adapt your plans when new informati   P     80   

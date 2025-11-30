@@ -1,0 +1,190 @@
+/* reset box sizing and remove default margins/padding */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 600px;
+  margin: auto;
+  padding: 30px;
+  font-family: Arial, sans-serif;
+}
+
+.button {
+  padding: 12px 20px;
+  margin: 10px;
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.question-box {
+  padding: 20px;
+  background: #f4f4f4;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+/* === app layout & cards === */
+.shell {
+  min-height: 100vh;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #0a0e27;
+}
+
+.shell nav {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.shell nav button {
+  padding: 12px 24px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.shell nav button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.shell nav button:active {
+  transform: translateY(0);
+}
+
+.start-card {
+  background: #f7f9fe;
+  border: 1px solid #e5eefc;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.title {
+  margin: 0 0 16px;
+  text-align: center;
+}
+
+/* === inputs & buttons === */
+.name-input {
+  width: 100%;
+  max-width: 420px;
+  padding: 12px 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.btn {
+  padding: 10px 16px;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #1f2937;
+  color: #fff;
+}
+
+.btn+.btn {
+  margin-left: 10px;
+}
+
+.btn-start {
+  background: #2563eb;
+}
+
+/* green = start if you prefer: #16a34a */
+.btn-yes {
+  background: #16a34a;
+}
+
+.btn-no {
+  background: #dc2626;
+}
+
+/* === helpers === */
+.center {
+  text-align: center;
+}
+
+/* === quiz text === */
+.question-text {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  margin: 12px 0 20px;
+}
+
+/* === result pretty JSON box === */
+.prob-box {
+  background: #0b1220;
+  color: #9fd4ff;
+  padding: 14px;
+  border-radius: 8px;
+  overflow: auto;
+}
+
+.desc-box {
+  background: #eef5ff;
+  padding: 15px 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  border-left: 5px solid #1e90ff;
+}
+
+.desc-title {
+  margin: 0 0 6px;
+  color: #1e90ff;
+}
+
+.desc-text {
+  margin: 0;
+}
+
+.prob-table-wrap {
+  overflow-x: auto;
+}
+
+.prob-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 10px 0 20px;
+  font-size: 15px;
+}
+
+.prob-table th,
+.prob-table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.prob-table thead th {
+  background: #f8f9fb;
+  font-weight: 600;
+}

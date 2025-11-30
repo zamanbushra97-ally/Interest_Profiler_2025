@@ -1,0 +1,1557 @@
+/* RIASEC Quiz Advanced Styles */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+/* Updated Color Palette */
+:root {
+  --primary-color: #6C63FF;
+  --accent-color: #4da6ff;
+  --riasec-r: #FF6B6B;
+  --riasec-i: #4D96FF;
+  --riasec-a: #9D4EDD;
+  --riasec-s: #38B000;
+  --riasec-e: #FF8E00;
+  --riasec-c: #4BC6B9;
+}
+
+.riasec-quiz {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Particle Background */
+.riasec-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.riasec-particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  animation: riasecFloat 15s infinite;
+}
+
+@keyframes riasecFloat {
+  0% {
+    transform: translateY(100vh) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(100px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Welcome Screen */
+.riasec-welcome-screen {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 60px 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  min-height: calc(100vh - 100px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 24px;
+  margin: 20px;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3);
+}
+
+.riasec-floating-caricatures {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.riasec-floating-caricature {
+  position: absolute;
+  font-size: 60px;
+  opacity: 0.3;
+  animation: riasecFloatAround 8s ease-in-out infinite;
+}
+
+.riasec-floating-caricature:nth-child(1) {
+  top: 10%;
+  left: 5%;
+  animation-delay: 0s;
+}
+
+.riasec-floating-caricature:nth-child(2) {
+  top: 20%;
+  right: 10%;
+  animation-delay: 2s;
+}
+
+.riasec-floating-caricature:nth-child(3) {
+  bottom: 15%;
+  left: 8%;
+  animation-delay: 4s;
+}
+
+.riasec-floating-caricature:nth-child(4) {
+  bottom: 25%;
+  right: 5%;
+  animation-delay: 6s;
+}
+
+@keyframes riasecFloatAround {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-20px) translateX(10px) rotate(5deg);
+  }
+  50% {
+    transform: translateY(-10px) translateX(-10px) rotate(-5deg);
+  }
+  75% {
+    transform: translateY(-30px) translateX(5px) rotate(3deg);
+  }
+}
+
+.riasec-hero-section {
+  margin-bottom: 50px;
+  position: relative;
+  z-index: 2;
+}
+
+.riasec-student-caricature-large {
+  width: 250px;
+  height: 250px;
+  margin: 0 auto 30px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 150px;
+  animation: riasecFloatAvatar 3s ease-in-out infinite;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  border: 5px solid rgba(255, 255, 255, 0.3);
+}
+
+@keyframes riasecFloatAvatar {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-25px) scale(1.05);
+  }
+}
+
+.riasec-welcome-header h1 {
+  font-size: 3rem;
+  font-weight: 900;
+  margin-bottom: 15px;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.riasec-welcome-header p {
+  font-size: 1.3rem;
+  opacity: 0.95;
+  margin-bottom: 40px;
+}
+
+.riasec-stats-container {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin: 40px 0;
+  flex-wrap: wrap;
+}
+
+.riasec-stat-card {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  padding: 25px 35px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  min-width: 150px;
+  transition: transform 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.riasec-stat-card:hover {
+  transform: translateY(-5px) scale(1.05);
+}
+
+.riasec-stat-icon {
+  font-size: 2.5rem;
+}
+
+.riasec-stat-content {
+  text-align: left;
+}
+
+.riasec-stat-value {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.riasec-stat-label {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.riasec-feature-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  margin: 50px 0;
+  perspective: 1000px;
+}
+
+.riasec-feature-card {
+  padding: 35px 25px;
+  border-radius: 20px;
+  transition: all 0.4s;
+  cursor: pointer;
+  border: none;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.riasec-feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.riasec-feature-card.card-1 {
+  background: linear-gradient(135deg, #9B59B6 0%, #E91E63 100%);
+}
+
+.riasec-feature-card.card-2 {
+  background: linear-gradient(135deg, #3498DB 0%, #00D2D3 100%);
+}
+
+.riasec-feature-card.card-3 {
+  background: linear-gradient(135deg, #F39C12 0%, #E74C3C 100%);
+}
+
+.riasec-feature-card:hover {
+  transform: rotateY(5deg) rotateX(5deg) translateY(-15px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+
+.riasec-feature-icon {
+  font-size: 4rem;
+  margin-bottom: 20px;
+  display: block;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+.riasec-feature-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: white;
+}
+
+.riasec-feature-desc {
+  font-size: 0.95rem;
+  opacity: 0.95;
+  color: rgba(255, 255, 255, 0.95);
+  line-height: 1.5;
+}
+
+.riasec-btn-primary {
+  width: 100%;
+  max-width: 450px;
+  padding: 22px;
+  background: white;
+  color: #667eea;
+  border: none;
+  border-radius: 16px;
+  font-size: 1.4rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  margin: 40px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.riasec-btn-primary:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+}
+
+.riasec-btn-primary:active {
+  transform: translateY(-1px) scale(0.98);
+}
+
+/* Question Screen */
+.riasec-question-screen {
+  padding: 40px;
+  background: linear-gradient(to bottom, #f8f9fa, white);
+  min-height: calc(100vh - 100px);
+  max-width: 1000px;
+  margin: 20px auto;
+  border-radius: 24px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+.riasec-progress-circle-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.riasec-progress-circle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 8px 25px rgba(46, 134, 222, 0.3);
+  animation: riasecPulse 2s ease-in-out infinite;
+}
+
+@keyframes riasecPulse {
+  0%, 100% {
+    box-shadow: 0 8px 25px rgba(46, 134, 222, 0.3);
+  }
+  50% {
+    box-shadow: 0 8px 35px rgba(46, 134, 222, 0.5);
+  }
+}
+
+.riasec-progress-circle::before {
+  content: '';
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: white;
+  position: absolute;
+}
+
+.riasec-progress-text {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.riasec-progress-number {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2E86DE;
+}
+
+.riasec-progress-label {
+  font-size: 0.8rem;
+  color: #7f8c8d;
+}
+
+.riasec-character-section {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.riasec-animated-character {
+  width: 200px;
+  height: 200px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 120px;
+  margin-bottom: 20px;
+  animation: riasecCharacterBounce 2s ease-in-out infinite;
+  box-shadow: 0 10px 40px rgba(102, 126, 234, 0.5);
+  position: relative;
+}
+
+.riasec-animated-character::before {
+  content: '';
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.3), rgba(118, 75, 162, 0.3));
+  animation: riasecRipple 2s ease-out infinite;
+}
+
+@keyframes riasecCharacterBounce {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-15px) scale(1.05);
+  }
+}
+
+@keyframes riasecRipple {
+  0% {
+    transform: scale(0.8);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+}
+
+.riasec-character-message {
+  background: linear-gradient(135deg, #eef5ff, #f0f8ff);
+  padding: 18px 30px;
+  border-radius: 25px;
+  display: inline-block;
+  font-size: 1rem;
+  color: #2c3e50;
+  border-left: 5px solid #2E86DE;
+  max-width: 450px;
+  font-weight: 500;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.riasec-question-card {
+  background: linear-gradient(135deg, #eef5ff 0%, #f0f8ff 100%);
+  border: none;
+  border-radius: 20px;
+  padding: 45px;
+  margin: 35px 0;
+  box-shadow: 0 10px 40px rgba(46, 134, 222, 0.15);
+  position: relative;
+  overflow: hidden;
+  border-left: 5px solid #2E86DE;
+}
+
+.riasec-question-number {
+  color: #2E86DE;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.riasec-question-icon-large {
+  font-size: 4rem;
+  margin: 25px 0;
+  text-align: center;
+  display: block;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+}
+
+.riasec-question-text {
+  font-size: 1.6rem;
+  line-height: 1.7;
+  color: #2c3e50;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.riasec-likert-container {
+  margin: 40px 0;
+}
+
+.riasec-likert-title {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 30px;
+}
+
+.riasec-likert-scale-advanced {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin: 35px 0;
+}
+
+.riasec-scale-option-advanced {
+  flex: 1;
+  padding: 30px 18px;
+  border: 3px solid #e1e8ed;
+  border-radius: 18px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  background: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.riasec-scale-option-advanced::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: left 0.5s;
+}
+
+.riasec-scale-option-advanced:hover::before {
+  left: 100%;
+}
+
+.riasec-scale-option-advanced:hover {
+  border-color: #2E86DE;
+  transform: translateY(-8px);
+  box-shadow: 0 10px 30px rgba(46, 134, 222, 0.3);
+}
+
+.riasec-scale-option-advanced.selected {
+  background: linear-gradient(135deg, #2E86DE, #6C5CE7);
+  color: white;
+  border-color: #2E86DE;
+  transform: scale(1.08) translateY(-8px);
+  box-shadow: 0 12px 35px rgba(46, 134, 222, 0.5);
+}
+
+.riasec-scale-emoji {
+  font-size: 3rem;
+  margin-bottom: 12px;
+  display: block;
+  line-height: 1;
+}
+
+.riasec-scale-value {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.riasec-scale-label {
+  font-size: 0.8rem;
+  opacity: 0.9;
+  line-height: 1.4;
+}
+
+.riasec-selected-feedback {
+  text-align: center;
+  padding: 22px;
+  background: linear-gradient(135deg, #eef5ff, #f0f4ff);
+  border-radius: 18px;
+  margin-top: 35px;
+  color: #2E86DE;
+  font-weight: 600;
+  font-size: 1.2rem;
+  border: 2px solid #2E86DE;
+  animation: riasecGlow 2s ease-in-out infinite;
+}
+
+@keyframes riasecGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(46, 134, 222, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(46, 134, 222, 0.6);
+  }
+}
+
+.riasec-tip-box {
+  background: #fff5e6;
+  border-left: 5px solid #F39C12;
+  padding: 18px 25px;
+  border-radius: 15px;
+  margin-top: 35px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.riasec-tip-icon {
+  font-size: 1.8rem;
+}
+
+/* Result Screen */
+.riasec-result-screen {
+  padding: 40px;
+  background: linear-gradient(to bottom, #f8f9fa, white);
+  position: relative;
+  min-height: calc(100vh - 100px);
+  max-width: 1000px;
+  margin: 20px auto;
+  border-radius: 24px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+.riasec-confetti-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  border-radius: 24px;
+}
+
+.riasec-confetti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: #2E86DE;
+  animation: riasecConfettiFall 3s linear;
+}
+
+@keyframes riasecConfettiFall {
+  to {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.riasec-result-header {
+  text-align: center;
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 2;
+}
+
+.riasec-result-header h1 {
+  font-size: 2.8rem;
+  font-weight: 900;
+  color: #2c3e50;
+  margin-bottom: 25px;
+}
+
+.riasec-result-code {
+  font-size: 5rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 25px 0;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.riasec-stat-box-advanced {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+  padding: 28px;
+  border-radius: 18px;
+  margin: 25px auto;
+  max-width: 450px;
+  box-shadow: 0 8px 30px rgba(108, 99, 255, 0.3);
+  color: white;
+}
+
+.riasec-stat-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  font-size: 1.15rem;
+  color: white;
+}
+
+.riasec-stat-row strong {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.riasec-interest-grid-advanced {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  margin: 50px 0;
+  perspective: 1000px;
+}
+
+.riasec-interest-card-final {
+  background: white;
+  border: 2px solid #e1e8ed;
+  border-radius: 20px;
+  padding: 35px 25px;
+  text-align: center;
+  transition: all 0.4s;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.riasec-interest-card-final::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: var(--card-gradient);
+}
+
+.riasec-interest-card-final:hover {
+  transform: translateY(-12px) rotateY(5deg);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+}
+
+.riasec-interest-icon-large {
+  font-size: 4rem;
+  margin-bottom: 20px;
+  display: block;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
+}
+
+.riasec-interest-name-full {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: #2c3e50;
+}
+
+.riasec-interest-percentage {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin: 20px 0;
+  background: var(--card-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.riasec-interest-description {
+  font-size: 0.95rem;
+  color: #7f8c8d;
+  line-height: 1.6;
+  margin-top: 15px;
+  font-style: italic;
+}
+
+.riasec-interest-card-final.R {
+  --card-gradient: linear-gradient(135deg, var(--riasec-r), #FF5252);
+}
+
+.riasec-interest-card-final.I {
+  --card-gradient: linear-gradient(135deg, var(--riasec-i), #3D7EDB);
+}
+
+.riasec-interest-card-final.A {
+  --card-gradient: linear-gradient(135deg, var(--riasec-a), #7B2CBF);
+}
+
+.riasec-interest-card-final.S {
+  --card-gradient: linear-gradient(135deg, var(--riasec-s), #2B8800);
+}
+
+.riasec-interest-card-final.E {
+  --card-gradient: linear-gradient(135deg, var(--riasec-e), #E67E00);
+}
+
+.riasec-interest-card-final.C {
+  --card-gradient: linear-gradient(135deg, var(--riasec-c), #3BA89B);
+}
+
+.riasec-chart-placeholder-advanced {
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  border: 3px dashed #dee2e6;
+  border-radius: 20px;
+  padding: 100px;
+  text-align: center;
+  color: #7f8c8d;
+  margin: 40px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.riasec-chart-placeholder-advanced::before {
+  content: '📊';
+  font-size: 5rem;
+  display: block;
+  margin-bottom: 20px;
+  animation: riasecRotate 3s linear infinite;
+}
+
+@keyframes riasecRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.riasec-student-gallery {
+  margin: 50px 0;
+  padding: 35px;
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  border-radius: 24px;
+}
+
+.riasec-student-gallery h3 {
+  margin-bottom: 25px;
+  color: #2c3e50;
+  text-align: center;
+  font-size: 1.8rem;
+}
+
+.riasec-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.riasec-gallery-item {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.riasec-gallery-item:hover {
+  transform: scale(1.08) translateY(-5px);
+}
+
+.riasec-gallery-avatar {
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-radius: 50%;
+  margin: 0 auto 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+}
+
+.riasec-gallery-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 5px;
+}
+
+.riasec-gallery-code {
+  font-size: 0.8rem;
+  color: #7f8c8d;
+}
+
+.riasec-loading {
+  text-align: center;
+  padding: 60px;
+  font-size: 1.2rem;
+  color: #667eea;
+}
+
+.riasec-error {
+  background: #fee;
+  border: 2px solid #fcc;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px;
+  color: #c33;
+  text-align: center;
+}
+
+.riasec-error-button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: #c33;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* ============================================
+   ENHANCED RESULT PAGE STYLES
+   ============================================ */
+
+/* 1. Enhanced Header Section */
+.riasec-result-header-enhanced {
+  text-align: center;
+  margin-bottom: 50px;
+  position: relative;
+  z-index: 2;
+}
+
+.riasec-result-header-enhanced h1 {
+  font-size: 2.8rem;
+  font-weight: 900;
+  color: #2c3e50;
+  margin-bottom: 15px;
+}
+
+.riasec-header-label {
+  font-size: 1.1rem;
+  color: #7f8c8d;
+  margin-bottom: 15px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.riasec-code-badge {
+  display: inline-block;
+  font-size: 4.5rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  padding: 15px 40px;
+  border: 4px solid var(--primary-color);
+  border-radius: 20px;
+  margin: 15px 0;
+  box-shadow: 0 8px 30px rgba(108, 99, 255, 0.3);
+  position: relative;
+  animation: riasecCodePulse 2s ease-in-out infinite;
+}
+
+@keyframes riasecCodePulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 8px 30px rgba(108, 99, 255, 0.3);
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 12px 40px rgba(108, 99, 255, 0.5);
+  }
+}
+
+.riasec-code-explanation {
+  font-size: 1.3rem;
+  color: #34495e;
+  font-weight: 600;
+  margin-top: 15px;
+  font-style: italic;
+}
+
+/* 2. Enhanced Confetti */
+.riasec-confetti-enhanced {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  animation: riasecConfettiFallEnhanced 4s linear infinite;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes riasecConfettiFallEnhanced {
+  0% {
+    transform: translateY(-10vh) translateX(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) translateX(100px) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+/* 3. Confidence Panel - Circular Progress */
+.riasec-confidence-panel {
+  text-align: center;
+  margin: 50px auto;
+  max-width: 350px;
+  padding: 35px;
+  background: white;
+  border-radius: 24px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+.riasec-confidence-circle-container {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  margin: 0 auto 20px;
+}
+
+.riasec-confidence-circle {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.riasec-confidence-bg {
+  transition: stroke-dasharray 1s ease;
+}
+
+.riasec-confidence-progress {
+  transition: stroke-dasharray 1.5s ease-out;
+  filter: drop-shadow(0 2px 8px rgba(108, 99, 255, 0.4));
+}
+
+.riasec-confidence-value {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2.5rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.riasec-confidence-label {
+  font-size: 1.1rem;
+  color: #7f8c8d;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.riasec-confidence-interpretation {
+  font-size: 0.95rem;
+  color: #34495e;
+  line-height: 1.5;
+  font-style: italic;
+}
+
+/* 4. Confidence in Accuracy (95% CI) Cards - Redesigned */
+.riasec-ci-section {
+  margin: 60px 0;
+  padding: 0 20px;
+}
+
+.riasec-ci-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.riasec-ci-card {
+  background: white;
+  border-radius: 18px;
+  padding: 25px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  border-top: 6px solid var(--trait-color);
+  transition: all 0.3s;
+}
+
+.riasec-ci-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+}
+
+.riasec-ci-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.riasec-ci-icon {
+  font-size: 2.5rem;
+}
+
+.riasec-ci-trait-name {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 5px;
+}
+
+.riasec-ci-score {
+  font-size: 1.1rem;
+  color: var(--trait-color);
+  font-weight: 600;
+}
+
+.riasec-ci-progress-bar-container {
+  margin: 20px 0;
+}
+
+.riasec-ci-progress-bar-bg {
+  width: 100%;
+  height: 12px;
+  background: #e1e8ed;
+  border-radius: 10px;
+  position: relative;
+  overflow: visible;
+  margin-bottom: 8px;
+}
+
+.riasec-ci-progress-bar-fill {
+  height: 100%;
+  border-radius: 10px;
+  transition: width 1s ease-out;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.riasec-ci-score-marker {
+  position: absolute;
+  top: -6px;
+  width: 24px;
+  height: 24px;
+  background: white;
+  border: 3px solid;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.riasec-ci-range {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: #7f8c8d;
+  margin-top: 5px;
+}
+
+.riasec-ci-details {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #e1e8ed;
+  font-size: 0.9rem;
+  color: #34495e;
+}
+
+.riasec-ci-ci-range {
+  font-weight: 600;
+}
+
+.riasec-ci-margin {
+  color: #7f8c8d;
+}
+
+/* 5. Enhanced Radar Chart Section */
+.riasec-radar-container {
+  margin: 60px 0;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #f8f9fa, #ffffff);
+  border-radius: 24px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+}
+
+.riasec-radar-wrapper {
+  max-width: 550px;
+  margin: 30px auto;
+  padding: 30px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(108, 99, 255, 0.15);
+}
+
+.riasec-section-title {
+  text-align: center;
+  color: #2c3e50;
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.riasec-section-title::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  margin: 15px auto 0;
+  border-radius: 2px;
+}
+
+/* 6. Enhanced Interest Profile Cards */
+.riasec-interest-grid-enhanced {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin: 50px 0;
+  perspective: 1000px;
+}
+
+.riasec-interest-card-enhanced {
+  background: white;
+  border: 2px solid #e1e8ed;
+  border-radius: 24px;
+  padding: 45px 30px;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.riasec-interest-card-enhanced::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: var(--card-gradient);
+  z-index: 1;
+}
+
+.riasec-interest-top-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: var(--card-gradient);
+}
+
+.riasec-interest-card-enhanced:hover {
+  transform: translateY(-15px) scale(1.03);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+  border-color: var(--card-color);
+}
+
+.riasec-interest-icon-enhanced {
+  font-size: 5rem;
+  margin-bottom: 20px;
+  display: block;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.15));
+  transition: transform 0.3s;
+}
+
+.riasec-interest-card-enhanced:hover .riasec-interest-icon-enhanced {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.riasec-interest-subtitle {
+  font-size: 0.85rem;
+  color: var(--card-color);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  padding: 6px 12px;
+  background: rgba(0, 0, 0, 0.03);
+  border-radius: 12px;
+  display: inline-block;
+}
+
+.riasec-interest-name-enhanced {
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin-bottom: 15px;
+  color: #2c3e50;
+}
+
+.riasec-interest-percentage-enhanced {
+  font-size: 3rem;
+  font-weight: 900;
+  margin: 20px 0;
+  background: var(--card-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}
+
+.riasec-interest-description-enhanced {
+  font-size: 1rem;
+  color: #7f8c8d;
+  line-height: 1.6;
+  margin-top: 15px;
+  font-style: italic;
+}
+
+/* Update color variables for cards */
+.riasec-interest-card-enhanced.R {
+  --card-color: var(--riasec-r);
+  --card-gradient: linear-gradient(135deg, var(--riasec-r), #FF5252);
+}
+
+.riasec-interest-card-enhanced.I {
+  --card-color: var(--riasec-i);
+  --card-gradient: linear-gradient(135deg, var(--riasec-i), #3D7EDB);
+}
+
+.riasec-interest-card-enhanced.A {
+  --card-color: var(--riasec-a);
+  --card-gradient: linear-gradient(135deg, var(--riasec-a), #7B2CBF);
+}
+
+.riasec-interest-card-enhanced.S {
+  --card-color: var(--riasec-s);
+  --card-gradient: linear-gradient(135deg, var(--riasec-s), #2B8800);
+}
+
+.riasec-interest-card-enhanced.E {
+  --card-color: var(--riasec-e);
+  --card-gradient: linear-gradient(135deg, var(--riasec-e), #E67E00);
+}
+
+.riasec-interest-card-enhanced.C {
+  --card-color: var(--riasec-c);
+  --card-gradient: linear-gradient(135deg, var(--riasec-c), #3BA89B);
+}
+
+/* 7. Enhanced Students Like You Section */
+.riasec-student-gallery-enhanced {
+  margin: 60px 0;
+  padding: 40px 20px;
+}
+
+.riasec-gallery-scroll {
+  display: flex;
+  gap: 25px;
+  overflow-x: auto;
+  padding: 20px 10px;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-color) #e1e8ed;
+}
+
+.riasec-gallery-scroll::-webkit-scrollbar {
+  height: 8px;
+}
+
+.riasec-gallery-scroll::-webkit-scrollbar-track {
+  background: #e1e8ed;
+  border-radius: 10px;
+}
+
+.riasec-gallery-scroll::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 10px;
+}
+
+.riasec-student-card {
+  background: white;
+  border-radius: 20px;
+  padding: 30px 25px;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s;
+  min-width: 220px;
+  flex-shrink: 0;
+  border: 2px solid #e1e8ed;
+}
+
+.riasec-student-card:hover {
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 15px 40px rgba(108, 99, 255, 0.3);
+  border-color: var(--primary-color);
+}
+
+.riasec-student-avatar-enhanced {
+  width: 90px;
+  height: 90px;
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  border-radius: 50%;
+  margin: 0 auto 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 50px;
+  box-shadow: 0 8px 20px rgba(108, 99, 255, 0.3);
+  transition: transform 0.3s;
+}
+
+.riasec-student-card:hover .riasec-student-avatar-enhanced {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.riasec-student-name-enhanced {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 8px;
+}
+
+.riasec-student-code-enhanced {
+  font-size: 0.95rem;
+  color: var(--primary-color);
+  font-weight: 600;
+  margin-bottom: 12px;
+  padding: 6px 12px;
+  background: rgba(108, 99, 255, 0.1);
+  border-radius: 12px;
+  display: inline-block;
+}
+
+.riasec-student-similarity {
+  font-size: 0.9rem;
+  color: #7f8c8d;
+  margin-bottom: 18px;
+  font-weight: 500;
+}
+
+.riasec-student-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.riasec-student-btn {
+  padding: 10px 18px;
+  border: 2px solid var(--primary-color);
+  background: white;
+  color: var(--primary-color);
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 0.9rem;
+}
+
+.riasec-student-btn:hover {
+  background: var(--primary-color);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(108, 99, 255, 0.3);
+}
+
+.riasec-student-btn.secondary {
+  border-color: #e1e8ed;
+  color: #7f8c8d;
+}
+
+.riasec-student-btn.secondary:hover {
+  border-color: var(--accent-color);
+  background: var(--accent-color);
+  color: white;
+}
+
+/* 8. Enhanced Footer Section */
+.riasec-footer-enhanced {
+  position: relative;
+  margin-top: 80px;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.riasec-footer-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(108, 99, 255, 0.05), rgba(77, 166, 255, 0.05));
+  border-radius: 24px;
+  z-index: 0;
+}
+
+.riasec-btn-restart-large {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 450px;
+  padding: 25px 40px;
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  color: white;
+  border: none;
+  border-radius: 16px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 10px 35px rgba(108, 99, 255, 0.4);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.riasec-btn-restart-large:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 15px 45px rgba(108, 99, 255, 0.5);
+}
+
+.riasec-btn-restart-large:active {
+  transform: translateY(-2px) scale(0.98);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .riasec-feature-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .riasec-likert-scale-advanced {
+    flex-direction: column;
+  }
+
+  .riasec-interest-grid-enhanced {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .riasec-interest-card-enhanced {
+    min-height: 280px;
+    padding: 30px 20px;
+  }
+
+  .riasec-ci-cards {
+    gap: 20px;
+  }
+
+  .riasec-code-badge {
+    font-size: 3rem;
+    padding: 12px 30px;
+  }
+
+  .riasec-code-explanation {
+    font-size: 1.1rem;
+  }
+
+  .riasec-confidence-panel {
+    padding: 25px;
+  }
+
+  .riasec-confidence-circle-container {
+    width: 140px;
+    height: 140px;
+  }
+
+  .riasec-welcome-header h1 {
+    font-size: 2rem;
+  }
+
+  .riasec-question-text {
+    font-size: 1.2rem;
+  }
+
+  .riasec-section-title {
+    font-size: 1.6rem;
+  }
+
+  .riasec-gallery-scroll {
+    padding: 15px 5px;
+  }
+
+  .riasec-student-card {
+    min-width: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .riasec-interest-grid-enhanced {
+    grid-template-columns: 1fr;
+  }
+}
+

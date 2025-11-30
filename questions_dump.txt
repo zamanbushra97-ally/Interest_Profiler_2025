@@ -1,0 +1,38 @@
+ID    Axis  Question                                                     Yes   No   
+------------------------------------------------------------------------------------------
+1     ?     Do you prefer spending time alone rather than attending so   I     1    
+2     ?     Do you enjoy working independently more than collaborating   I     2    
+3     ?     Do you prefer deep one-on-one conversations to group discu   I     3    
+4     ?     Do you feel more productive when working in a quiet, solit   I     4    
+5     ?     Do you often reflect on your thoughts and feelings rather    I     5    
+6     ?     Do you enjoy attending parties and social gatherings with    E     6    
+7     ?     Do you feel energized and recharged after spending time wi   E     7    
+8     ?     Do you find it easy to strike up conversations with strang   E     8    
+9     ?     Do you thrive in environments where you are surrounded by    E     9    
+10    ?     Do you prefer to focus on facts and details rather than id   S     10   
+11    ?     Do you prefer concrete information over abstract theories?   S     11   
+12    ?     Do you enjoy tasks that involve hands-on work and tangible   S     12   
+13    ?     Do you prefer step-by-step instructions over broad guideli   S     13   
+14    ?     Do you enjoy working with your hands and creating physical   S     14   
+15    ?     Do you often think about the possibilities of what could b   N     15   
+16    ?     Do you enjoy brainstorming and coming up with new ideas?     N     16   
+17    ?     Do you prefer to focus on the big picture rather than gett   N     17   
+18    ?     Do you enjoy exploring abstract concepts and theories?       N     18   
+19    ?     Do you prioritize logic and objectivity over emotions when   T     19   
+20    ?     Do you find it easier to make decisions based on facts rat   T     20   
+21    ?     Do you enjoy analyzing problems and finding logical soluti   T     21   
+22    ?     Do you prefer to stick to the facts in discussions rather    T     22   
+23    ?     Do you value efficiency and effectiveness over harmony in    T     23   
+24    ?     Do you consider how your decisions will affect others' fee   F     24   
+25    ?     Do you prefer to maintain harmony in relationships rather    F     25   
+26    ?     Do you prioritize others' needs and emotions when making d   F     26   
+27    ?     Do you value kindness and compassion over strict fairness?   F     27   
+28    ?     Do you prefer to plan things in advance rather than being    J     28   
+29    ?     Do you feel more comfortable when you have a clear schedul   J     29   
+30    ?     Do you like to finish tasks before starting new ones?        J     30   
+31    ?     Do you prefer having a structured routine rather than goin   J     31   
+32    ?     Do you often set goals and work systematically to achieve    J     32   
+33    ?     Do you enjoy being spontaneous and flexible rather than st   P     33   
+34    ?     Do you enjoy exploring new opportunities rather than stick   P     34   
+35    ?     Do you feel comfortable adapting to changes and new situat   P     35   
+36    ?     Do you find it easy to adapt your plans when new informati   P     36   
