@@ -12,13 +12,7 @@ export default defineConfig({
     },
   },
   build: {
-    rollupOptions: {
-      input: ['src/main.jsx'],
-      output: {
-        format: 'es',
-        entryFileNames: 'main.js',
-        assetFileNames: 'assets/[name]-[hash][extname]',
-      },
-    },
+    outDir: 'dist',
+    emptyOutDir: true,
   },
 });
