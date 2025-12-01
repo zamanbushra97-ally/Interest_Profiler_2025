@@ -10,7 +10,10 @@
         },
         {
             "src": "api/index.py",
-            "use": "@vercel/python"
+            "use": "@vercel/python",
+            "config": {
+                "maxLambdaSize": "15mb"
+            }
         }
     ],
     "routes": [
@@ -22,12 +25,5 @@
             "src": "/(.*)",
             "dest": "frontend/dist/$1"
         }
-    ],
-    "functions": {
-        "api/index.py": {
-            "memory": 1024,
-            "maxDuration": 10
-        }
-    },
-    "outputDirectory": "frontend/dist"
+    ]
 }
