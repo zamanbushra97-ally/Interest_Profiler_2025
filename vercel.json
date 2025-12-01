@@ -2,10 +2,15 @@
     "buildCommand": "cd frontend && npm install && npm run build",
     "outputDirectory": "frontend/dist",
     "installCommand": "npm install --prefix frontend",
+    "functions": {
+        "api/**/*.py": {
+            "runtime": "python3.9"
+        }
+    },
     "rewrites": [
         {
             "source": "/api/:path*",
-            "destination": "/api/index.py"
+            "destination": "/api/index"
         }
     ]
 }
